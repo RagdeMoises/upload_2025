@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Carga Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h1><i class="fas fa-cloud-upload-alt"></i> Panel de Carga</h1>
+        </header>
+
+        <div class="container">
+            <!-- Sección de carga de Excel -->
+            <section class="card">
+                <h2><i class="fas fa-file-excel"></i> Carga de Archivo Excel</h2>
+                <form action="https://backmars2025-production.up.railway.app/data/upload" method="POST" enctype="multipart/form-data" class="upload-form">
+                    <div class="upload-area" id="excelDropzone">
+                        <i class="fas fa-file-excel"></i>
+                        <p>Arrastra tu archivo Excel aquí o haz clic para seleccionar</p>
+                        <input type="file" name="file" id="excelInput" accept=".xlsx, .xls" required>
+                        <button type="submit" class="btn">Subir Archivo</button>
+                    </div>
+                </form>
+                <div class="file-info" id="excelFileInfo"></div>
+            </section>
+
+            <!-- Sección de carga de imágenes individual -->
+            <section class="card">
+                <h2><i class="fas fa-image"></i> Carga Individual de Imágenes</h2>
+                <form action="https://backmars2025-production.up.railway.app/image/upload" method="POST" enctype="multipart/form-data" class="upload-form">
+                    <div class="upload-area" id="singleImageDropzone">
+                        <i class="fas fa-image"></i>
+                        <p>Arrastra una imagen aquí o haz clic para seleccionar</p>
+                        <input type="file" name="image" id="singleImageInput" accept="image/*" required>
+                        <button type="submit" class="btn">Subir Imagen</button>
+                    </div>
+                    <div class="preview-container" id="singleImagePreview"></div>
+                </form>
+            </section>
+
+            <!-- Sección de carga de imágenes por lotes -->
+            <section class="card">
+                <h2><i class="fas fa-images"></i> Carga Masiva de Imágenes</h2>
+                <form action="https://backmars2025-production.up.railway.app/images/upload" method="POST" enctype="multipart/form-data" class="upload-form" id="batchForm">
+                    <div class="upload-area" id="batchImageDropzone">
+                        <i class="fas fa-images"></i>
+                        <p>Arrastra múltiples imágenes aquí o haz clic para seleccionar</p>
+                        <input type="file" name="images" id="batchImageInput" accept="image/*" multiple required>
+                    </div>
+                    <div class="batch-info">
+                        <span id="batchCount">0 archivos seleccionados</span>
+                        <button type="submit" class="btn btn-secondary" id="startBatchUpload">Subir Imágenes</button>
+                    </div>
+                    <div class="batch-preview" id="batchPreview"></div>
+                </form>
+            </section>
+        </div>
+
+        <!-- Notificaciones -->
+        <div class="notification-container" id="notificationContainer"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
